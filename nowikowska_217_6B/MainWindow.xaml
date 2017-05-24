@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:nowikowska_217_6B"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Image Browser" Height="800" Width="600" MinHeight="500" MinWidth="500" WindowStartupLocation="CenterScreen" Background="#FFC9B1B1">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.ColumnSpan="3">
+            <MenuItem Header="File">
+                <MenuItem Header="Open Image" Click="OpenImageClick"></MenuItem>
+                <MenuItem Header="Open Folder" Click="OpenFolderClick"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Exit" Click="ExitClick"></MenuItem>
+            </MenuItem>
+            <MenuItem Header ="About" Click="AboutClick"></MenuItem>
+        </Menu>
     </Grid>
 </Window>

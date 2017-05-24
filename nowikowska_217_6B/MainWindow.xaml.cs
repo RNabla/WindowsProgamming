@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace nowikowska_217_6B
 {
@@ -23,6 +24,34 @@ namespace nowikowska_217_6B
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void OpenImageClick(object sender, RoutedEventArgs e)
+        {
+            var ofd = new OpenFileDialog
+            {
+                Filter = "Image files(*.jpg, *.jpeg, *.bmp, *.png)|*.jpg; *.jpeg; *.bmp; *.png"
+            };
+            var result = ofd.ShowDialog();
+            if (result.HasValue && result.Value)
+            {
+                
+            }
+        }
+
+        private void OpenFolderClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ExitClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void AboutClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
