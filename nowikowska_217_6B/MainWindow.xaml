@@ -8,7 +8,8 @@
         Title="Image Browser" Height="500" Width="500" MinHeight="500" MinWidth="500"
         WindowStartupLocation="CenterScreen" Background="#FFC9B1B1">
     <Window.Resources>
-        <RadialGradientBrush x:Key="ButtonBackground" GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5"
+        <local:PathImageToImageConverter x:Key="PathImageToImage"></local:PathImageToImageConverter>
+            <RadialGradientBrush x:Key="ButtonBackground" GradientOrigin="0.5,0.5" Center="0.5,0.5" RadiusX="0.5"
                              RadiusY="0.5">
             <RadialGradientBrush.GradientStops>
                 <GradientStop Color="White" Offset="0.0" />
@@ -101,14 +102,63 @@
                     <Button Click="ExitClick">Exit</Button>
                 </StackPanel>
             </Border>
-            <Border Style="{StaticResource DefaultBorder}" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3">
-                <ListView Background="#FF49A8DE"></ListView>
-            </Border>
             <Border Background="#FF8B9A59" Style="{StaticResource DefaultBorder}" Grid.Row="2" Grid.Column="0">
-                <CheckBox IsChecked="True">Show tree</CheckBox>
+                <CheckBox IsChecked="True" Name="ShowTreeView">Show tree</CheckBox>
             </Border>
-            <Border Background="#FF8B9A59" Style="{StaticResource DefaultBorder}" Grid.Row="3" Grid.Column="0">
-                <TreeView Background="Transparent"></TreeView>
+            <Border Background="#FF8B9A59" Grid.Row="3" Grid.Column="0">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Opacity" Value="1"/>
+                        <Setter Property="BorderThickness" Value="2"></Setter>
+                        <Setter Property="BorderBrush" Value="Black"></Setter>
+                        <Setter Property="Margin" Value="2,2,2,2"></Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=ShowTreeView, Path=IsChecked}" Value="True">
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+                                <DataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:1" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.ExitActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TreeView Name="Folders" Background="Transparent" MouseDoubleClick="TVI_DoubleClick"/>
+            </Border>
+            <Border Style="{StaticResource DefaultBorder}" Grid.Row="1" Grid.Column="2" Grid.RowSpan="3">
+                <ListView Name="Library" Background="#FF49A8DE" ItemsSource="{Binding}" MouseDoubleClick="Library_DoubleClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Background="White" Width="{Binding ElementName=SizeSlider,Path=Value}" Height="{Binding ElementName=SizeSlider,Path=Value}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="5" ShadowDepth="5" Opacity="0.5"/>
+                                </Grid.Effect>
+                                <Border Grid.Row="0" Grid.Column="0">
+                                    <Image Stretch="Uniform"  HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding PathImage, Converter={StaticResource PathImageToImage}}"></Image>
+                                </Border>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom"></TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding ViewportWidth, RelativeSource={RelativeSource AncestorType=ScrollViewer}}"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
             </Border>
         </Grid>
     </Grid>

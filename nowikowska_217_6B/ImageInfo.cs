@@ -13,31 +13,25 @@ namespace nowikowska_217_6B
 {
     public class ImageInfo
     {
-        public string Name;
-        public string CreationDate;
-        public string Dimensions;
-        public string Extension;
+        public string Name { get; set; }
+        public string CreationDate { get; set; }
+        public string Width { get; set; }
+        public string Height { get; set; }
         public BitmapImage BmpImage;
         public readonly string Path;
+
+        public ImageInfo()
+        {
+            
+        }
         public ImageInfo(string path)
         {
             Path = path;
-        }
-
-        public async void GetImageDetails()
-        {
-            await new Task(() =>
-            {
-                try
-                {
-                    Name = System.IO.Path.GetFileNameWithoutExtension(Path);
-                    CreationDate = File.GetCreationTime(Path).ToLongDateString();
-                    BmpImage = new BitmapImage(new Uri(Path));
-                    Dimensions = $"{BmpImage.Width}x{BmpImage.Height}";
-                    Extension = System.IO.Path.GetExtension(Path);
-                }
-                catch { }
-            });
+            Name = System.IO.Path.GetFileNameWithoutExtension(Path);
+            CreationDate = File.GetCreationTime(Path).ToLongDateString();
+            BmpImage = new BitmapImage(new Uri(Path));
+            Width = $"{Convert.ToInt32(BmpImage.Width)} px";
+            Height = $"{Convert.ToInt32(BmpImage.Height)} px";
         }
     }
 }

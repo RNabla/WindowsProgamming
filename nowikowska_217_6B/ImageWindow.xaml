@@ -5,8 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:nowikowska_217_6B"
         mc:Ignorable="d"
-        Title="ImageWindow" Height="300" Width="300">
-    <Grid>
-        <Image Name="Image"></Image>
+        ResizeMode="NoResize"
+        Title="{Binding Name}" Height="{Binding ElementName=mainGrid,Path=Height}" Width="{Binding ElementName=mainGrid,Path=Width}">
+    <Window.Resources>
+        <Style x:Key="Property" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontWeight" Value="SemiBold"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Name="mainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Border BorderThickness="2" BorderBrush="Black" Margin="2,2,2,2">
+                <Expander Header="Image Information" IsExpanded="True" Background="LightGray" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" MinWidth="100" MaxWidth="250"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource Property}" Text="Name: "></TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource Property}" Text="Width: "></TextBlock>
+                        <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource Property}" Text="Height: "></TextBlock>
+                        <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource Property}" Text="Creation date: "></TextBlock>
+                        <TextBlock Text="{Binding Name}" Grid.Row="0" Grid.Column="1" ></TextBlock>
+                        <TextBlock Text="{Binding Width}" Grid.Row="1" Grid.Column="1"></TextBlock>
+                        <TextBlock Text="{Binding Height}" Grid.Row="2" Grid.Column="1"></TextBlock>
+                        <TextBlock Text="{Binding CreationDate}" Grid.Row="3" Grid.Column="1"></TextBlock>
+                    </Grid>
+                </Expander>
+            </Border>
+
+            <Border BorderThickness="2" BorderBrush="Black" Margin="2,2,2,2">
+                <Expander Header="Image Information" IsExpanded="True" Background="LightGreen" >
+                    <StackPanel>
+                        <ComboBox Name="Plugins" Margin="2,2,2,2" ItemsSource="{Binding}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}"></TextBlock>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Button Margin="30,5,30,5" Click="UsePluginClick">Use plugin</Button>
+                    </StackPanel>
+                </Expander>
+            </Border>
+        </StackPanel>
+        <Border Grid.Row="0" Grid.Column="1" BorderBrush="Blue" BorderThickness="3">
+            <Image Name="Picture">
+
+                <Image.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Save"></MenuItem>
+                        <MenuItem Header="Reset"></MenuItem>
+                        <Separator/>
+                        <MenuItem Header="Exit"></MenuItem>
+                    </ContextMenu>
+
+                </Image.ContextMenu>
+            </Image>
+        </Border>
+        
     </Grid>
 </Window>
