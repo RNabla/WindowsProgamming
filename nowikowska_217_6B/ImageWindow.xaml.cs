@@ -19,9 +19,12 @@ namespace nowikowska_217_6B
     /// </summary>
     public partial class ImageWindow : Window
     {
-        public ImageWindow()
+        private readonly ImageInfo _ii;
+        public ImageWindow(ImageInfo ii)
         {
             InitializeComponent();
+            _ii = ii;
+            _ii.GetImageDetails();
         }
     }
 }

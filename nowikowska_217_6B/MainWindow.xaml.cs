@@ -35,7 +35,8 @@ namespace nowikowska_217_6B
             var result = ofd.ShowDialog();
             if (result.HasValue && result.Value)
             {
-                
+                var iw = new ImageWindow(new ImageInfo(ofd.FileName));
+                iw.Show();
             }
         }
 
@@ -46,12 +47,12 @@ namespace nowikowska_217_6B
 
         private void ExitClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Close();
         }
 
         private void AboutClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Simple Image Browser","About",MessageBoxButton.OK,MessageBoxImage.Information);
         }
     }
 }
