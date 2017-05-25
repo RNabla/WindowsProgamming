@@ -83,13 +83,17 @@ namespace nowikowska_217_6B
             DataContext = null;
             Thumbnails.Clear();
             var exts = new[] {".jpg", ".jpeg", ".bmp", ".png"};
-            var fileInfos = new DirectoryInfo(path).GetFiles().Where(fi => exts.Contains(fi.Extension));
-            foreach (var fileInfo in fileInfos)
-                Thumbnails.Add(new Picture
-                {
-                    PathImage = fileInfo.FullName,
-                    Name = Path.GetFileNameWithoutExtension(fileInfo.FullName)
-                });
+            try
+            {
+                var fileInfos = new DirectoryInfo(path).GetFiles().Where(fi => exts.Contains(fi.Extension));
+                foreach (var fileInfo in fileInfos)
+                    Thumbnails.Add(new Picture
+                    {
+                        PathImage = fileInfo.FullName,
+                        Name = Path.GetFileNameWithoutExtension(fileInfo.FullName)
+                    });
+            }
+            catch { }
             DataContext = Thumbnails;
             GC.Collect();
         }

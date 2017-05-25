@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:nowikowska_217_6B"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="{Binding Name}" Height="{Binding ElementName=mainGrid,Path=Height}" Width="{Binding ElementName=mainGrid,Path=Width}">
+        Title="{Binding Name}" SizeToContent="WidthAndHeight">
     <Window.Resources>
         <Style x:Key="Property" TargetType="{x:Type TextBlock}">
             <Setter Property="FontWeight" Value="SemiBold"></Setter>
@@ -16,10 +16,10 @@
     <Grid Name="mainGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel>
             <Border BorderThickness="2" BorderBrush="Black" Margin="2,2,2,2">
@@ -67,10 +67,10 @@
 
                 <Image.ContextMenu>
                     <ContextMenu>
-                        <MenuItem Header="Save"></MenuItem>
-                        <MenuItem Header="Reset"></MenuItem>
+                        <MenuItem Header="Save" Click="SaveImage"></MenuItem>
+                        <MenuItem Header="Reset" Click="ResetImage"></MenuItem>
                         <Separator/>
-                        <MenuItem Header="Exit"></MenuItem>
+                        <MenuItem Header="Exit" Click="TooltipExit"></MenuItem>
                     </ContextMenu>
 
                 </Image.ContextMenu>

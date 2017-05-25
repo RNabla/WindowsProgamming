@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nowikowska_217_6B", "nowikowska_217_6B\nowikowska_217_6B.csproj", "{DEFB917C-6B31-4D7A-955D-F9A75D1A9DBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPlugin", "IPlugin\IPlugin.csproj", "{A7EF0DB4-B3B5-4E47-832D-9189046F5355}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rotations", "Rotate180\Rotations.csproj", "{5F972F7E-FE4B-4A9C-B288-9CD2991B547D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{DEFB917C-6B31-4D7A-955D-F9A75D1A9DBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEFB917C-6B31-4D7A-955D-F9A75D1A9DBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEFB917C-6B31-4D7A-955D-F9A75D1A9DBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7EF0DB4-B3B5-4E47-832D-9189046F5355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7EF0DB4-B3B5-4E47-832D-9189046F5355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7EF0DB4-B3B5-4E47-832D-9189046F5355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7EF0DB4-B3B5-4E47-832D-9189046F5355}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F972F7E-FE4B-4A9C-B288-9CD2991B547D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F972F7E-FE4B-4A9C-B288-9CD2991B547D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F972F7E-FE4B-4A9C-B288-9CD2991B547D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F972F7E-FE4B-4A9C-B288-9CD2991B547D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
